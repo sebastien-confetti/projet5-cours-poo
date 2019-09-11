@@ -17,7 +17,7 @@ class PersonnagesManager
         // Assignation des valeurs pour le nom du personnage
         $req = $this->_db->prepare('INSERT INTO Personnages(nom) VALUES(:nom)');
         $req->bindValue(':nom', $perso->nom());
-        $req->excute(); // Exécution de la requête
+        $req->execute(); // Exécution de la requête
 
         // Hydratation du personnage passé en paramètre avec assignation de son identifiant et des dégâts initiaux (= 0)
         $perso->hydrate([
