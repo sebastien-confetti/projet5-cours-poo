@@ -33,7 +33,7 @@ $manager = new PersonnagesManager($db); // on instancie la classe PersonnagesMan
 // si on a voulu créer un personnage
 if (isset($_POST['creer']) && isset($_POST['nom']))
 {
-    // on crée un nouveau personnage (nouvel ojet $perso)
+    // on crée un nouveau personnage (création du nouvel objet $perso de type Personnage)
     $perso = new Personnage(['nom' => $_POST['nom']]);
 
     if (!$perso->nomValide())

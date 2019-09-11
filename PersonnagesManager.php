@@ -8,6 +8,7 @@ class PersonnagesManager
     // ---------------------------------------
     public function __construct($db)
     {
+        // l'objet $this appelle la méthode setDb()
         $this->setDb($db);
     }
 

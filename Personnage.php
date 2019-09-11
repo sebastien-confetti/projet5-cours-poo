@@ -21,6 +21,7 @@ class Personnage
     // ---------------------------------------
     public function __construct(array $donnees)
     {
+        // l'objet $this appelle la méthode hydrate()
         $this->hydrate($donnees);   // Implémentation du constructeur qui sera ensuite hydraté avec le tableau $donnees
     }
 
