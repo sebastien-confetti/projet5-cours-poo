@@ -102,7 +102,7 @@ elseif (isset($_GET['frapper']))
                     $message = 'Vous avez tué ce personnage !';
 
                     $manager->update($perso);
-                    $manager->update($persoAFrapper);
+                    $manager->delete($persoAFrapper);
 
                     break;
             }
@@ -154,7 +154,7 @@ if (empty($persos))
 else
 {
     foreach ($persos as $unPerso)
-        echo '<a href="?frapper=', $unPerso->id(), '">', htmlspecialchars($unPerso->nom()), '</a> (dégâts : ', $unPerso->degats(), ')<br />';
+        echo '<a href="?frapper=', $unPerso->id(), '">', htmlspecialchars($unPerso->nom()), '</a> (dégâts : ', $unPerso->degats(), ' ; Expérience : ', $unPerso->experience(), ')<br />';
 }
 ?>
             </p>
