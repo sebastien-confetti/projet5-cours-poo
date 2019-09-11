@@ -66,19 +66,6 @@ elseif (isset($_POST['utiliser']) && isset($_POST['nom']))
         $message = 'Ce personnage n\'existe pas !';
     }
 }
-// si on a voulu utiliser un personnage
-elseif (isset($_POST['utiliser']) && isset($_POST['nom']))
-{
-    // si celui-ci existe
-    if ($manager->exists($_POST['nom']))
-    {
-        $perso = $manager->get($_POST['nom']);
-    }
-    else
-    {
-        $message = 'Ce personnage n\'existe pas !'; // s'il n'existe pas, on affiche ce message
-    }
-}
 // si on a cliqué sur un personnage pour le frapper
 elseif (isset($_GET['frapper']))
 {
@@ -157,7 +144,7 @@ if (isset($perso))
             <legend>Qui frapper ?</legend>
             <p>
 <?php
-$perso = $manager->getList($perso->nom());
+$persos = $manager->getList($perso->nom());
 
 // s'il n'y a aucun personnage
 if (empty($persos))
