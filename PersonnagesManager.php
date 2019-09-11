@@ -29,7 +29,7 @@ class PersonnagesManager
 
     public function count()
     {
-        // Exécute une requête COUNT() et retourne le nombre de résultats retourné
+        // Exécute une requête COUNT() et retourne le nombre de résultats retourné (de personnages)
         return $this->_db->query('SELECT COUNT(*) FROM Personnages')->fetchColumn();
     }
 
@@ -41,7 +41,7 @@ class PersonnagesManager
 
     public function exists($info)
     {
-        // Si le paramètre est un entier, c'est qu'on a fourni un identifiant
+        // Si le paramètre est un entier, c'est qu'on a fournit un identifiant
         if (is_int($info))
         {
             // On exécute alors une requête COUNT() avec une clause WHERE, et on retourne un boolean
@@ -62,7 +62,7 @@ class PersonnagesManager
         if (is_int($info))
         {
             // on récupére le personnage avec son identifiant
-            $req = $this->_db->query('SELECT id, nom, degats FROM Personnages WHERE id = '.$info);
+            $req = $this->_db->query('SELECT id, nom, degats, experience FROM Personnages WHERE id = '.$info);
             $donnees = $req->fetch(PDO::FETCH_ASSOC);
             // Retourne un objet Personnage
             return new Personnage($donnees);
@@ -70,7 +70,7 @@ class PersonnagesManager
         else    // Sinon, on veut récupérer le personnage avec son nom
         {
             // Exécute une requête de type SELECT avec une clause WHERE
-            $req = $this->_db->prepare('SELECT id, nom, degats FROM Personnages WHERE nom = :nom');
+            $req = $this->_db->prepare('SELECT id, nom, degats, experience FROM Personnages WHERE nom = :nom');
             $req->execute([':nom' => $info]);
             // Retourne un objet Personnage
             return new Personnage($req->fetch(PDO::FETCH_ASSOC));
@@ -82,7 +82,7 @@ class PersonnagesManager
         $persos = [];
 
         // Retourne la liste des personnages dont le nom n'est pas $nom
-        $req = $this->_db->prepare('SELECT id, nom, degats FROM Personnages WHERE nom <> :nom ORDER BY nom');
+        $req = $this->_db->prepare('SELECT id, nom, degats, experience FROM Personnages WHERE nom <> :nom ORDER BY nom');
         $req->execute([':nom' => $nom]);
 
         // Le résultat sera un tableau d'instances de Personnage
