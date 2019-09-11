@@ -17,7 +17,7 @@ class Personnage
     const PERSONNAGE_FRAPPE = 3;    // Constante renvoyée par la méthode `frapper` si on a bien frappé le personnage
 
     // ---------------------------------------
-    // CONSTRUCTEUR
+    // CONSTRUCTEUR (pour initialiser les attributs dès sa création)
     // ---------------------------------------
     public function __construct(array $donnees)
     {
@@ -28,6 +28,12 @@ class Personnage
     // Création des METHODES
     // (fonctionnalités d'un personnage)
     // ---------------------------------------
+    public function nomValide()
+    {
+        // si $_nom n'est pas vide, retourne "true" sinon retourne "false"
+        return !empty($this->_nom);
+    }
+
     public function frapper(Personnage $perso)
     {
         // Avant tout : vérifier qu'on ne se frappe pas soi-même.
