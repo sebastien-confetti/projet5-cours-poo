@@ -7,7 +7,9 @@ class Personnage
     // ---------------------------------------
     private $_id,
             $_degats,
+            $_experience,
             $_nom;
+
 
     // ---------------------------------------
     // Création des CONSTANTES
@@ -89,6 +91,11 @@ class Personnage
         return $this->_degats;  // retourne l'attribut $_degats
     }
 
+    public function experience()
+    {
+        return $this->_experience;  // retourne l'attribut $_experience
+    }
+
     public function id()
     {
         return $this->_id;  // retourne l'attribut $_id
@@ -100,7 +107,7 @@ class Personnage
     }
 
     // ---------------------------------------
-    // Création des SETTERS pour pouvoir modifier les valeurs des attributs de nos objets
+    // Création des SETTERS pour pouvoir modifier et lire les valeurs des attributs de nos objets
     // ---------------------------------------
     public function setDegats($degats)
     {
@@ -109,6 +116,16 @@ class Personnage
         if ($degats >= 0 && $degats <= 100)
         {
             $this->_degats = $degats;   // donne la valeur $degats à l'attribut $_degats
+        }
+    }
+
+    public function setExperience($experience)
+    {
+        $experience = (int) $experience;    // Le convertit en nombre entier
+
+        if ($experience >= 0 && $experience <= 100)
+        {
+            $this->_experience = $experience;   // donne la valeur $experience à l'attribut $_experience
         }
     }
 
