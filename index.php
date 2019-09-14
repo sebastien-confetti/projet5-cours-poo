@@ -154,7 +154,7 @@ if (empty($persos))
 else
 {
     foreach ($persos as $unPerso)
-        echo '<a href="?frapper=', $unPerso->id(), '">', htmlspecialchars($unPerso->nom()), '</a> (dégâts : ', $unPerso->degats(), ' ; Expérience : ', $unPerso->experience(), ')<br />';
+        echo '<a href="?frapper=', $unPerso->id(), '">', htmlspecialchars($unPerso->nom()), '</a> (dégâts : ', $unPerso->degats(), ' ; Expérience : ', $unPerso->experience(), ' ; Niveau : ', $unPerso->niveau(), ' ; Force : ', $unPerso->forcePerso(), ')<br />';
 }
 ?>
             </p>
